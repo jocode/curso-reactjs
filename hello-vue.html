@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hola Mundo, Vue JS</title>
+</head>
+<body>
+
+    <h1>Hola Mundo en Vue JS</h1>
+    <div id="app">
+        Hola {{ nombre }}
+        <a v-bind:href="url" target="_blank">{{pagina}}</a>
+    </div>
+
+    <!--Librería de Vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript">
+        let app = new Vue({
+            el: '#app',
+            data: {
+                nombre: "Johan Mosquera",
+                url: "https://johanmosquera.me",
+                pagina: "WebSite"
+            }
+        })
+    </script>
+</body>
+</html>
