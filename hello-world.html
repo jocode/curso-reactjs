@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Curso ReactJS - Hola Mundo</title>
+</head>
+<section id="container"></section>
+<body>
+    <script src="http://fb.me/react-0.13.3.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.3.js"></script>
+    <!-- Usando ES6 -->
+    <script type="text/jsx;harmony=true">
+        class HelloWorldComponent extends React.Component {
+            render(){
+                return <h1>Hello {this.props.name}!</h1>
+            }
+        }
+
+        React.render(<HelloWorldComponent name="Ñandú"/>, document.getElementById('container'));
+
+        setTimeout( ()=> {
+            React.render(<HelloWorldComponent name="Johan Mosquera"/>, document.getElementById('container'));
+        }, 3000 )
+    </script>
+    
+    <script>
+        /**
+        //Usando JS Normal
+        var HelloWorldComponent = React.createClass({
+            render: function(){
+                return <h1>Hello {this.props.name}!</h1>
+            }
+        });
+
+        React.render(<HelloWorldComponent name="Ñandú Spoliler"/>, document.getElementById('container'));
+        **/
+    </script>
+</body>
+
+</html>
