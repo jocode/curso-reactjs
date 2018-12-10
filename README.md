@@ -71,3 +71,76 @@ React.render(<Pokerow name={pokemon.name} number={pokemon.number}/>, document.ge
 ```
 
 *Ver archivo* [pokerow.html](pokerow.html)
+
+## Separando componentes
+
+Para definir mejor la lógica, podemos separar los componentes en cada archivo. Para ello creamos la carpeta `components`, y allí creamos un archivo con el nombre de la clase que hemos definido para el componente, usando ES6.
+
+Por ejemplo
+
+En el archivo [PokeAvatar.js](PokeAvatar.js), colocamos el componentes referente a esa clase, el cual es el siguientes.
+
+```js
+/**
+ * Module Dependencies
+ */
+import React from 'react';
+
+export default class PokeAvatar extends React.Component {
+    render(){
+        var url = `http://veekun.com/dex/media/pokemon/main-sprites/x-y/${this.props.number}.png`;
+        return <img src={url} className="avatar"/>
+    }
+}
+```
+
+Como necesitamos react, necesitamos importar el archivo. Para eso, usamos npm para que nos gestione las dependencias. Para eso, debemos crear el archivo **package.json**, donde le indicamos el nombre del proyecto, y las dependencias que usará.
+
+```json
+{
+  "name": "pokechat",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}
+```
+*[package.json](package.json)*
+
+La propiedad dependencies, se ha agregado al ejecutar el comando `npm install --save react`
+
+El parámetro **--save** le indica a npm, que agregue la dependencia al archivo *package.json*, de esta manera nos evitamos estar escribiendo manualmente la versión que utilizamos.
+
+> Con el comando **`npm install`** se instalan todas las dendencias que  hemos definido en el archivo `package.json`
+
+## Instalamos Browserify
+
+Browserify es un programa que nos convierte el código a javascript, generando un bundle, que es un archivo que incluye todas las librerías y código de la aplicación para no tener que hacer varias peticiones al servidor.
+
+`npm install --save browserify`
+
+## Babelify
+
+Nos permite traspilar el código de JSX y ES6 a Javascript común, que se ejecuta en cualquiera de los navegadores
+
+Para instalar **babelify** ejecutamos el siguiente comando 
+
+* `npm install babelify`
+
+## Ejecutar browserify en el proyecto 
+
+Definimos el archivo a ejecutar, para eso, usamos la propiedad script, y le indicamos que deseamos ejecutar browserify en el *entry point* que es nuestro caso en **app.js** y el archivo que obtendrá el resultado que es **build.js** y por último la transformación que queremos que utilice que es **babelify**
+
+```json
+...
+"scripts": {
+    "build": "browserify app.js > build.js -t babelify"
+}
+```
+
+### Ejecutando el comando
+
+Para ejecutar el script, colocamos el comando
+
+* `npm run build`
+
+Donde *build* es el nombre del script que hemos definido anteriormente
